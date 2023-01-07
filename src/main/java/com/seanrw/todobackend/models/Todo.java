@@ -1,20 +1,27 @@
-package com.seanrw.models;
+package com.seanrw.todobackend.models;
 
 import java.util.UUID;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Todo {
 
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String text;
     private String complete;
 
     public Todo(String text, String isComplete) {
-        this.id = UUID.randomUUID();
         this.text = text;
         this.complete = isComplete;
     }
 
-    public UUID getId() {
+    public int getId() {
         return this.id;
     }
 
@@ -32,5 +39,13 @@ public class Todo {
 
     public void setComplete(String complete) {
         this.complete = complete;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Todo: [id = %i, text = %s, complete = %b]", 
+            id, text, complete
+        );
     }
 }

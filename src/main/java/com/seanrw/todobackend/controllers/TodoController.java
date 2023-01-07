@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.seanrw.models.Todo;
+import com.seanrw.todobackend.models.Todo;
 import com.seanrw.todobackend.services.TodoService;
 
 @RestController
@@ -31,7 +31,7 @@ public class TodoController {
     }
 
     @GetMapping("{id}")
-    public Todo getTodoById(@PathVariable UUID id) {
+    public Todo getTodoById(@PathVariable int id) {
         return todoService.getTodoById(id);
     }
 
@@ -47,7 +47,7 @@ public class TodoController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteTodo(@PathVariable UUID id) {
+    public void deleteTodo(@PathVariable int id) {
         todoService.destroyTodo(id);
     }
 }
