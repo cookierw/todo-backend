@@ -1,10 +1,10 @@
 package com.seanrw.todobackend.controllers;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,29 +25,29 @@ public class TodoController {
     @Autowired
     private TodoService todoService;
     
-    @GetMapping("/")
+    @GetMapping
     public List<Todo> getTodos() {
         return todoService.getTodos();
     }
 
-    @GetMapping("/{id}")
-    public Todo getTodoById(long id) {
+    @GetMapping("{id}")
+    public Todo getTodoById(@PathVariable UUID id) {
         return todoService.getTodoById(id);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Todo addTodo(@RequestBody Todo todo) {
         return todoService.addOrUpdate(todo);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Todo updateTodo(@RequestBody Todo todo) {
         return todoService.addOrUpdate(todo);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteTodo(@PathVariable long id) {
+    public void deleteTodo(@PathVariable UUID id) {
         todoService.destroyTodo(id);
     }
 }

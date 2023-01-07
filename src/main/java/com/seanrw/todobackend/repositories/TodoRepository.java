@@ -2,6 +2,7 @@ package com.seanrw.todobackend.repositories;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
@@ -20,9 +21,9 @@ public class TodoRepository {
         return this.todos;
     }
 
-    public Todo findTodoById(long id) {
+    public Todo findTodoById(UUID id) {
         for (Todo todo : todos) {
-            if (todo.getId() == id) return todo;
+            if (todo.getId().equals(id)) return todo;
         }
 
         return null;
@@ -33,9 +34,9 @@ public class TodoRepository {
         return todo;
     }
 
-    public void delete(long id) {
+    public void delete(UUID id) {
         for (int i = 0; i < todos.size(); i++) {
-            if (todos.get(i).getId() == id) {
+            if (todos.get(i).getId().equals(id)) {
                 todos.remove(i);
                 return;
             }

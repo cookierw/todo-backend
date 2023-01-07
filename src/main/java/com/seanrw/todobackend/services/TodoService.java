@@ -1,6 +1,7 @@
 package com.seanrw.todobackend.services;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class TodoService {
         return todoRepo.findAll();
     }
 
-    public Todo getTodoById(Long id) {
+    public Todo getTodoById(UUID id) {
         return todoRepo.findTodoById(id);
     }
 
@@ -26,7 +27,7 @@ public class TodoService {
         return todoRepo.save(todo);
     }
 
-    public void destroyTodo(long id) {
+    public void destroyTodo(UUID id) {
         Todo todo = getTodoById(id);
         todoRepo.delete(id);
     }

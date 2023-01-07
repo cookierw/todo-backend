@@ -1,22 +1,20 @@
 package com.seanrw.models;
 
-import java.util.Random;
+import java.util.UUID;
 
 public class Todo {
-    
-    private final Random random = new Random();
 
-    private long id;
+    private UUID id;
     private String text;
     private String complete;
 
     public Todo(String text, String isComplete) {
-        this.id = random.nextLong();
+        this.id = UUID.randomUUID();
         this.text = text;
         this.complete = isComplete;
     }
 
-    public long getId() {
+    public UUID getId() {
         return this.id;
     }
 
