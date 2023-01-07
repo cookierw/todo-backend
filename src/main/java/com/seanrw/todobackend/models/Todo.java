@@ -15,32 +15,32 @@ public class Todo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false)
-    private String text;
-    @Column(nullable = false)
-    private String complete;
+    private String body;
+    @Column(columnDefinition = "BOOLEAN", nullable = false)
+    private boolean complete;
 
-    public Todo(String text, String isComplete) {
-        this.text = text;
-        this.complete = isComplete;
+    public Todo(String text, boolean complete) {
+        this.body = text;
+        this.complete = complete;
     }
 
     public int getId() {
         return this.id;
     }
 
-    public String getText() {
-        return text;
+    public String getBody() {
+        return body;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setBody(String text) {
+        this.body = text;
     }
 
-    public String getComplete() {
+    public boolean getComplete() {
         return complete;
     }
 
-    public void setComplete(String complete) {
+    public void setComplete(boolean complete) {
         this.complete = complete;
     }
 
@@ -48,7 +48,7 @@ public class Todo {
     public String toString() {
         return String.format(
             "Todo: [id = %i, text = %s, complete = %b]", 
-            id, text, complete
+            id, body, complete
         );
     }
 }
