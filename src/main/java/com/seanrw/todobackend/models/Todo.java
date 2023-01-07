@@ -1,9 +1,10 @@
 package com.seanrw.todobackend.models;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -12,11 +13,12 @@ import jakarta.persistence.Table;
 public class Todo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "hilo_strategy", strategy = "hilo")
+    @GeneratedValue(generator = "hilo-strategy")
     private int id;
     @Column(nullable = false)
     private String body;
-    @Column(columnDefinition = "BOOLEAN", nullable = false)
+    @Column(nullable = false)
     private boolean complete;
 
     public Todo(String text, boolean complete) {
