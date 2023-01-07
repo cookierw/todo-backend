@@ -16,12 +16,15 @@ public class Todo {
     @GenericGenerator(name = "hilo_strategy", strategy = "hilo")
     @GeneratedValue(generator = "hilo-strategy")
     private int id;
+
     @Column(nullable = false)
     private String body;
+    
     @Column(nullable = false)
     private boolean complete;
 
     public Todo(String text, boolean complete) {
+        super();
         this.body = text;
         this.complete = complete;
     }
