@@ -16,7 +16,7 @@ public class TodoRepository {
         this.todos = new ArrayList<>();
     }
 
-    public List<Todo> findAllTodos() {
+    public List<Todo> findAll() {
         return this.todos;
     }
 
@@ -28,8 +28,17 @@ public class TodoRepository {
         return null;
     }
 
-    public boolean addTodo(Todo todo) {
+    public Todo save(Todo todo) {
         this.todos.add(todo);
-        return true;
+        return todo;
+    }
+
+    public void delete(long id) {
+        for (int i = 0; i < todos.size(); i++) {
+            if (todos.get(i).getId() == id) {
+                todos.remove(i);
+                return;
+            }
+        }
     }
 }
