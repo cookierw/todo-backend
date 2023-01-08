@@ -1,6 +1,10 @@
 package com.seanrw.todobackend.exceptions;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 // Failed login, either username or password
+@ResponseStatus(HttpStatus.UNAUTHORIZED)
 public class LoginFailedException extends RuntimeException {
 
     public LoginFailedException() {

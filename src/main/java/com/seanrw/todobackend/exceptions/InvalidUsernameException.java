@@ -1,6 +1,10 @@
 package com.seanrw.todobackend.exceptions;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 // Username exists, username fails constraints, etc
+@ResponseStatus(HttpStatus.UNAUTHORIZED)
 public class InvalidUsernameException extends RuntimeException {
 
     public InvalidUsernameException() {
