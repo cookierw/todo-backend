@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.seanrw.todobackend.dtos.requests.LoginRequest;
 import com.seanrw.todobackend.dtos.requests.NewUserRequest;
+import com.seanrw.todobackend.dtos.responses.Principal;
+import com.seanrw.todobackend.exceptions.LoginFailedException;
 import com.seanrw.todobackend.models.User;
 import com.seanrw.todobackend.repositories.UserRepository;
 
@@ -22,7 +24,9 @@ public class UserService {
         return user;
     }
 
-    // public Principal login(LoginRequest req) {
-    //     Optional<User> user = userRepo.
-    // }
+    public Principal login(LoginRequest req) {
+        User user = userRepo.findByUsernameAndPassword(req.getUsername(), req.getPassword());
+        if (user == null) throw new LoginFailedException("Login Failed");
+        return new Principal(user.getId(), user.getUsername());
+    }
 }
