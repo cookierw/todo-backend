@@ -30,7 +30,7 @@ public class TodoController {
     }
 
     @GetMapping("{id}")
-    public Todo getTodoById(@PathVariable int id) {
+    public Todo getTodoById(@PathVariable String id) {
         return todoService.getTodoById(id);
     }
 
@@ -46,7 +46,7 @@ public class TodoController {
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void deleteTodo(@PathVariable int id) {
+    public void deleteTodo(@PathVariable String id) {
         todoService.destroyTodo(id);
     }
 }

@@ -19,7 +19,7 @@ public class TodoService {
         return todoRepo.findAll();
     }
 
-    public Todo getTodoById(int id) {
+    public Todo getTodoById(String id) {
         Optional<Todo> todo = todoRepo.findById(id);
         if (todo.isPresent()) {
             return todo.get();
@@ -32,7 +32,7 @@ public class TodoService {
         return todoRepo.save(todo);
     }
 
-    public void destroyTodo(int id) {
+    public void destroyTodo(String id) {
         Todo todo = getTodoById(id);
         todoRepo.deleteById(id);
     }
