@@ -1,12 +1,18 @@
 package com.seanrw.todobackend.models;
 
-// import java.util.List;
+import java.util.List;
+import java.util.UUID;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,8 +20,6 @@ import jakarta.persistence.Table;
 public class User {
     
     @Id
-    @GenericGenerator(name = "hilo_strategy", strategy = "hilo")
-    @GeneratedValue(generator = "hilo-strategy")
     private String id;
 
     private String username;
@@ -28,6 +32,7 @@ public class User {
 
     public User(String username, String password) {
         super();
+        this.id = UUID.randomUUID().toString();
         this.username = username;
         this.password = password;
     }
@@ -52,7 +57,11 @@ public class User {
         this.password = password;
     }
     
-    // TODO: implement userId property/field on Todo/todos
-    // @OneToMany()
-    // private List<Todo> todos;
+    @OneToMany(
+        cascade = CascadeType.ALL,
+        fetch = FetchType.EAGER,
+        mappedBy = "userId"
+    )
+    @JsonManagedReference
+    private List<Todo> todos;
 }
