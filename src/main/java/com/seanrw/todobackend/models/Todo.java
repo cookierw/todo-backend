@@ -23,6 +23,10 @@ public class Todo {
     @Column(nullable = false)
     private boolean complete;
 
+    public Todo() {
+        super();
+    }
+
     public Todo(String text, boolean complete) {
         super();
         this.body = text;
