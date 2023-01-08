@@ -2,7 +2,7 @@ package com.seanrw.todobackend.dtos.responses;
 
 public class Principal {
     
-    private Long id;
+    private String id;
     private String username;
     private String token;
 
@@ -10,23 +10,23 @@ public class Principal {
         super();
     }
 
-    public Principal(Long id, String username) {
+    public Principal(String id, String username) {
         super();
         this.id = id;
         this.username = username;
     }
 
-    public Principal(Long id, String username, String token) {
+    public Principal(String id, String username, String token) {
         this.id = id;
         this.username = username;
         this.token = token;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,7 +49,7 @@ public class Principal {
     @Override
     public String toString() {
         return String.format(
-            "Principal: [id: %i, username: %s, token: %s]",
+            "Principal: [id: %s, username: %s, token: %s]",
             id, username, token
         );
     }
