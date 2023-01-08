@@ -2,11 +2,8 @@ package com.seanrw.todobackend.models;
 
 import java.util.UUID;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -19,24 +16,26 @@ public class Todo {
 
     @Column(name = "user_id", nullable = false)
     private String userId;
-
+    
     @Column(nullable = false)
     private String body;
     
     @Column(nullable = false)
     private boolean complete;
-
+    
     public Todo() {
         super();
+        this.id = UUID.randomUUID().toString();
     }
-
-    public Todo(String text, boolean complete) {
+    
+    public Todo(String userId, String text, boolean complete) {
         super();
         this.id = UUID.randomUUID().toString();
+        this.userId = userId;
         this.body = text;
         this.complete = complete;
     }
-
+    
     public String getId() {
         return this.id;
     }
@@ -44,15 +43,23 @@ public class Todo {
     public String getBody() {
         return body;
     }
-
+    
     public void setBody(String text) {
         this.body = text;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+    
     public boolean getComplete() {
         return complete;
     }
-
+    
     public void setComplete(boolean complete) {
         this.complete = complete;
     }
