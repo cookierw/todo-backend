@@ -15,8 +15,8 @@ public class TodoService {
     @Autowired
     private TodoRepository todoRepo;
 
-    public List<Todo> getTodos() {
-        return todoRepo.findAll();
+    public List<Todo> getTodos(String userId) {
+        return todoRepo.findTodosByUserId(userId);
     }
 
     public Todo getTodoById(String id) {
