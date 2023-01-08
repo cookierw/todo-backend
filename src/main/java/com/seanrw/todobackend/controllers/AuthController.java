@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +12,6 @@ import com.seanrw.todobackend.dtos.requests.NewUserRequest;
 import com.seanrw.todobackend.dtos.responses.Principal;
 import com.seanrw.todobackend.services.AuthService;
 import com.seanrw.todobackend.services.UserService;
-import com.seanrw.todobackend.util.JwtConfig;
 
 @RestController
 public class AuthController {
