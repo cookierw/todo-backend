@@ -1,5 +1,7 @@
 package com.seanrw.todobackend.models;
 
+import java.util.UUID;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.Column;
@@ -13,9 +15,10 @@ import jakarta.persistence.Table;
 public class Todo {
 
     @Id
-    @GenericGenerator(name = "hilo_strategy", strategy = "hilo")
-    @GeneratedValue(generator = "hilo-strategy")
-    private int id;
+    private String id;
+
+    @Column(name = "user_id", nullable = false)
+    private String userId;
 
     @Column(nullable = false)
     private String body;
@@ -29,11 +32,12 @@ public class Todo {
 
     public Todo(String text, boolean complete) {
         super();
+        this.id = UUID.randomUUID().toString();
         this.body = text;
         this.complete = complete;
     }
 
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
