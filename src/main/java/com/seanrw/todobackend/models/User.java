@@ -28,6 +28,7 @@ public class User {
     
     public User() {
         super();
+        this.id = UUID.randomUUID().toString();
     }
 
     public User(String username, String password) {
